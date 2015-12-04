@@ -44,15 +44,13 @@ app.post('/api/tasks', function(req,res,next) {
 
 app.put('/api/tasks/:rowid', function(req,res,next) {
 
-    var sql = 'update task s set done=? where rowid =?';
+    var sql = 'update tasks set done=? where rowid =?';
     db.run(sql, [req.body.done, req.params.rowid], function(err) {
         if (err) {
             return next (err);
         }
         res.json(req.body);
     })
-
-
 
 })
 
